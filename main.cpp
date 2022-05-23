@@ -1,6 +1,8 @@
 #include <iostream>
 #include "World.h"
 #include "Wall.h"
+#include "Player.h"
+#include "Goal.h"
 
 using namespace std;
 
@@ -21,6 +23,9 @@ int main()
 		MyWorld->MyActors.push_back(new AWall(0, i, '#', true));
 		MyWorld->MyActors.push_back(new AWall(9, i, '#', true));
 	}
+
+	MyWorld->MyActors.push_back(new APlayer(1, 1, 'P', true));
+	MyWorld->MyActors.push_back(new AGoal(8, 8, 'G', true));
 
 
 	//Run
