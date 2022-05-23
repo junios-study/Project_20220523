@@ -1,6 +1,7 @@
 #pragma once
-#include "World.h"
 #include <string>
+
+class World;
 
 using namespace std;
 

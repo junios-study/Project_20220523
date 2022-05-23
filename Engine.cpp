@@ -1,8 +1,8 @@
 #include <iostream>
 #include <fstream>
 
-#include "Engine.h"
 #include "World.h"
+#include "Engine.h"
 #include "Wall.h"
 #include "Player.h"
 #include "Goal.h"
@@ -42,19 +42,19 @@ void Engine::Load(string MapFilename)
 			switch (Cursor)
 			{
 			case '#':
-				MyWorld->MyActors.push_back(new AWall(X, Y, '#', true));
+				MyWorld->MyActors.push_back(new AWall((int)X, Y, '#', true));
 				break;
 			case ' ':
-				MyWorld->MyActors.push_back(new AFloor(X, Y, ' ', false));
+				MyWorld->MyActors.push_back(new AFloor((int)X, Y, ' ', false));
 				break;
 			case 'P':
-				MyWorld->MyActors.push_back(new APlayer(X, Y, 'P', true));
+				MyWorld->MyActors.push_back(new APlayer((int)X, Y, 'P', true));
 				break;
 			case 'G':
-				MyWorld->MyActors.push_back(new AGoal(X, Y, 'G', false));
+				MyWorld->MyActors.push_back(new AGoal((int)X, Y, 'G', false));
 				break;
 			case 'M':
-				MyWorld->MyActors.push_back(new AMonster(X, Y, 'M', false));
+				MyWorld->MyActors.push_back(new AMonster((int)X, Y, 'M', false));
 				break;
 			}
 		}
