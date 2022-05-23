@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "Goal.h"
 #include "Floor.h"
+#include "Monster.h"
 
 Engine::Engine()
 {
@@ -50,7 +51,10 @@ void Engine::Load(string MapFilename)
 				MyWorld->MyActors.push_back(new APlayer(X, Y, 'P', true));
 				break;
 			case 'G':
-				MyWorld->MyActors.push_back(new APlayer(X, Y, 'G', false));
+				MyWorld->MyActors.push_back(new AGoal(X, Y, 'G', false));
+				break;
+			case 'M':
+				MyWorld->MyActors.push_back(new AMonster(X, Y, 'M', false));
 				break;
 			}
 		}
