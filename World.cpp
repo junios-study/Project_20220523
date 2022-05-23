@@ -6,6 +6,12 @@ World::World()
 
 World::~World()
 {
+	for (auto Actor : MyActors)
+	{
+		delete Actor;
+	}
+
+	MyActors.clear();
 }
 
 void World::Tick()
