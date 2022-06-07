@@ -5,7 +5,7 @@ using namespace std;
 int main()
 {
 	Engine* MyEngine = new Engine();
-	MyEngine->Load("Level02.map");
+	MyEngine->Load("Level01.map");
 
 	MyEngine->Run();
 

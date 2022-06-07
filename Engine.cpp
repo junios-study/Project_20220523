@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <conio.h>
 
 #include "World.h"
 #include "Engine.h"
@@ -8,6 +9,10 @@
 #include "Goal.h"
 #include "Floor.h"
 #include "Monster.h"
+
+
+int Engine::KeyCode = 0;
+
 
 Engine::Engine()
 {
@@ -71,6 +76,7 @@ void Engine::Run()
 	//Run
 	while (bRunning) //1 Frame
 	{
+		Input();
 		MyWorld->Tick();
 		MyWorld->Render();
 	}
@@ -81,3 +87,10 @@ void Engine::Terminate()
 	delete MyWorld;
 	MyWorld = nullptr;
 }
+
+void Engine::Input()
+{
+	Engine::KeyCode = _getch();
+}
+
+
