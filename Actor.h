@@ -24,5 +24,7 @@ public:
 		return First->SortOrder < Second->SortOrder;
 	}
 
+	bool PredictCollision(int PredictX, int PredictY);
+
 };
 

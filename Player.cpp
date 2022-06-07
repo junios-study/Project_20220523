@@ -1,5 +1,7 @@
 #include "Player.h"
 #include "Engine.h"
+#include "World.h"
+#include "Goal.h"
 
 APlayer::APlayer()
 	: AActor()
@@ -23,16 +25,38 @@ void APlayer::Tick()
 	switch (KeyCode)
 	{
 	case 'w':
-		Y--;
+		Y = (PredictCollision(X, Y - 1) == false) ? Y - 1 : Y;
 		break;
 	case 's':
-		Y++;
+		Y = (PredictCollision(X, Y + 1) == false) ? Y + 1 : Y;
 		break;
 	case 'a':
-		X--;
+		X = (PredictCollision(X - 1, Y) == false) ? X - 1 : X;
 		break;
 	case 'd':
-		X++;
+		X = (PredictCollision(X + 1, Y) == false) ? X + 1 : X;
 		break;
 	}
+
+	if (IsGoal())
+	{
+		GEngine->QuitGame();
+	}
+}
+
+bool APlayer::IsGoal()
+{
+	for (auto Actor : GEngine->GetWorld()->MyActors)
+	{
+		if (Actor->X == X && Actor->Y == Y)
+		{
+			AGoal* Goal = dynamic_cast<AGoal*>(Actor);
+			if (Goal != nullptr)
+			{
+				return true;
+			}
+		}
+	}
+
+	return false;
 }

@@ -12,8 +12,6 @@ public:
 	Engine();
 	virtual ~Engine();
 
-	World* MyWorld;
-	bool bRunning;
 
 	void Initilize();
 	void Load(string MapFilename);
@@ -21,10 +19,27 @@ public:
 	void Terminate();
 	void Input();
 
+	void QuitGame() { bRunning = false; }
+
+
 	inline static int GetKeyCode() { return Engine::KeyCode; }
 
+	inline static Engine* GetEngine() { return Instance; }
+
+	inline World* GetWorld() const { return MyWorld; }
+
+
 protected:
+	World* MyWorld;
+
 	static int KeyCode;
+
+	static Engine* Instance;
+
+	bool bRunning;
+
 };
+
+#define GEngine Engine::GetEngine()
 
 

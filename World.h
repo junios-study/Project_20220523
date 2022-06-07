@@ -14,5 +14,9 @@ public:
 
 	void Tick();
 	void Render();
+
+	void SpawnActor(AActor* NewActor);
+
+	//static vector<AActor*> GetActorList() {	return MyActors; }
 };
 
