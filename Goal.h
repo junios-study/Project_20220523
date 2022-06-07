@@ -9,5 +9,7 @@ public:
 	virtual ~AGoal();
 
 	virtual void Tick() override;
+
+	void GoalCheck() {};
 };
 

@@ -8,7 +8,7 @@ class APlayer : public AActor
 public:
 	APlayer();
 	virtual ~APlayer();
-	APlayer(int NewX, int NewY, char NewShape, bool bNewCollision = false, int NewSortOrder = 5);
+	APlayer(int NewX, int NewY, char NewShape, bool bNewCollision = false, int NewSortOrder = 4);
 
 
 	virtual void Tick() override;
