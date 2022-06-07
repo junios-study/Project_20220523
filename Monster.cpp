@@ -9,8 +9,8 @@ AMonster::~AMonster()
 {
 }
 
-AMonster::AMonster(int NewX, int NewY, char NewShape, bool bNewCollision)
-	:AActor(NewX, NewY, NewShape, bNewCollision)
+AMonster::AMonster(int NewX, int NewY, char NewShape, bool bNewCollision, int NewSortOrder)
+	:AActor(NewX, NewY, NewShape, bNewCollision, NewSortOrder)
 {
 }
 

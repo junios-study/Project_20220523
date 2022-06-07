@@ -11,8 +11,8 @@ APlayer::~APlayer()
 {
 }
 
-APlayer::APlayer(int NewX, int NewY, char NewShape, bool bNewCollision)
-	: AActor(NewX, NewY, NewShape, bNewCollision)
+APlayer::APlayer(int NewX, int NewY, char NewShape, bool bNewCollision, int NewSortOrder)
+	: AActor(NewX, NewY, NewShape, bNewCollision, NewSortOrder)
 {
 }
 

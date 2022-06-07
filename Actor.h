@@ -6,16 +6,23 @@ class AActor
 {
 public:
 	AActor();
-	AActor(int NewX, int NewY, char NewShape, bool bNewCollision = false);
+	AActor(int NewX, int NewY, char NewShape, bool bNewCollision = false, int NewSortOrder = 1);
 	virtual ~AActor();
 
-	ESpriteType Type;
+	//ESpriteType Type;
 	char Shape;
 	int X;
 	int Y;
 	bool bCollision;
+	int SortOrder;
 	
 	virtual void Tick();
 	virtual void Render();
+
+	static bool Compare(AActor* First, AActor* Second)
+	{
+		return First->SortOrder < Second->SortOrder;
+	}
+
 };
 

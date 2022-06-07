@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <conio.h>
+#include <algorithm>
 
 #include "World.h"
 #include "Engine.h"
@@ -49,9 +50,6 @@ void Engine::Load(string MapFilename)
 			case '#':
 				MyWorld->MyActors.push_back(new AWall((int)X, Y, '#', true));
 				break;
-			case ' ':
-				MyWorld->MyActors.push_back(new AFloor((int)X, Y, ' ', false));
-				break;
 			case 'P':
 				MyWorld->MyActors.push_back(new APlayer((int)X, Y, 'P', true));
 				break;
@@ -62,11 +60,18 @@ void Engine::Load(string MapFilename)
 				MyWorld->MyActors.push_back(new AMonster((int)X, Y, 'M', false));
 				break;
 			}
+
+
+			MyWorld->MyActors.push_back(new AFloor((int)X, Y, ' ', false));
 		}
 
 
 		Y++;
 	}
+
+
+	//그리는 순서를 변경
+	sort(MyWorld->MyActors.begin(), MyWorld->MyActors.end(), AActor::Compare);
 
 	MapFile.close();
 }

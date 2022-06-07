@@ -10,14 +10,16 @@ AActor::AActor()
 	Y = 0;
 	Shape = ' ';
 	bCollision = false;
+	SortOrder = 1;
 }
 
-AActor::AActor(int NewX, int NewY, char NewShape, bool bNewCollision)
+AActor::AActor(int NewX, int NewY, char NewShape, bool bNewCollision, int NewSortOrder)
 {
 	X = NewX;
 	Y = NewY;
 	Shape = NewShape;
 	bCollision = bNewCollision;
+	SortOrder = NewSortOrder;
 }
 
 AActor::~AActor()

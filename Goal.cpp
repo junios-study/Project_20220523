@@ -5,8 +5,8 @@ AGoal::AGoal()
 {
 }
 
-AGoal::AGoal(int NewX, int NewY, char NewShape, bool bNewCollision)
-	: AActor(NewX, NewY, NewShape, bNewCollision)
+AGoal::AGoal(int NewX, int NewY, char NewShape, bool bNewCollision, int NewSortOrder)
+	: AActor(NewX, NewY, NewShape, bNewCollision, NewSortOrder)
 {
 }
 
