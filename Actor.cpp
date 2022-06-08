@@ -41,6 +41,9 @@ void AActor::Render()
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Cur);
 
 	cout << Shape;
+
+	SDL_SetRenderDrawColor(GEngine->MyRenderer, R, G, B, A);
+	SDL_RenderFillRect(GEngine->MyRenderer, new SDL_Rect{ X * Size, Y * Size, Size, Size });
 }
 
 bool AActor::PredictCollision(int PredictX, int PredictY)

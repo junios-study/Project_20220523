@@ -38,8 +38,8 @@ void Engine::Initilize()
 	}
 
 	//윈도창 만들기
-	SDL_Window* MyWindow = SDL_CreateWindow("Maze", 100, 100, 800, 600, SDL_WINDOW_VULKAN);
-	SDL_Renderer* MyRenderer = SDL_CreateRenderer(MyWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE);
+	MyWindow = SDL_CreateWindow("Maze", 100, 100, 800, 600, SDL_WINDOW_VULKAN);
+	MyRenderer = SDL_CreateRenderer(MyWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE);
 }
 
 void Engine::Load(string MapFilename)
@@ -92,15 +92,12 @@ void Engine::Run()
 	//Run
 	while (bRunning) //1 Frame
 	{
-
 		Input();
 		MyWorld->Tick();
 		SDL_SetRenderDrawColor(MyRenderer, 0xff, 0x00, 0x00, 0xff);
 		SDL_RenderClear(MyRenderer);
 
 		MyWorld->Render(); //액터 그릴꺼 등록
-
-		SDL_RenderFillRect(MyRenderer, new SDL_Rect{ 0, 0, 100, 100 });
 
 		//등록 된 일 시작
 		SDL_RenderPresent(MyRenderer);

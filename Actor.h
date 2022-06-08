@@ -15,6 +15,13 @@ public:
 	int Y;
 	bool bCollision;
 	int SortOrder;
+
+	int R = 0;
+	int G = 0;
+	int B = 0;
+	int A = 255;
+
+	int Size = 60;
 	
 	virtual void Tick();
 	virtual void Render();

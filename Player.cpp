@@ -7,6 +7,9 @@
 APlayer::APlayer()
 	: AActor()
 {
+	R = 0;
+	G = 0;
+	B = 255;
 }
 
 APlayer::~APlayer()
@@ -17,6 +20,9 @@ APlayer::~APlayer()
 APlayer::APlayer(int NewX, int NewY, char NewShape, bool bNewCollision, int NewSortOrder)
 	: AActor(NewX, NewY, NewShape, bNewCollision, NewSortOrder)
 {
+	R = 0;
+	G = 0;
+	B = 255;
 }
 
 void APlayer::Tick()
