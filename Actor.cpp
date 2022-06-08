@@ -14,6 +14,8 @@ AActor::AActor()
 	Shape = ' ';
 	bCollision = false;
 	SortOrder = 1;
+
+	ColorKey = SDL_Color { 255, 255, 255, 0 };
 }
 
 AActor::AActor(int NewX, int NewY, char NewShape, bool bNewCollision, int NewSortOrder)
@@ -23,6 +25,9 @@ AActor::AActor(int NewX, int NewY, char NewShape, bool bNewCollision, int NewSor
 	Shape = NewShape;
 	bCollision = bNewCollision;
 	SortOrder = NewSortOrder;
+
+	ColorKey = SDL_Color { 255, 255, 255, 0 };
+
 }
 
 AActor::~AActor()
@@ -65,7 +70,7 @@ void AActor::LoadBMP(string Filename)
 	Image = SDL_LoadBMP(Filename.c_str());
 
 	//Color Key
-	SDL_SetColorKey(Image, SDL_TRUE, SDL_MapRGB(Image->format, 255, 255, 255));
+	SDL_SetColorKey(Image, SDL_TRUE, SDL_MapRGB(Image->format, ColorKey.r, ColorKey.g, ColorKey.b));
 
 	//Memory -> VRAM(GPU)
 	Texture = SDL_CreateTextureFromSurface(GEngine->MyRenderer, Image);

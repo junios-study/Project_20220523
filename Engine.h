@@ -25,6 +25,8 @@ public:
 
 	void QuitGame() { bRunning = false; }
 
+	const Uint64 GetWorldDeltaSeconds() { return DeltaSeconds; }
+
 
 	inline static int GetKeyCode() { return Engine::KeyCode; }
 
@@ -46,6 +48,9 @@ protected:
 	static Engine* Instance;
 
 	bool bRunning;
+
+	Uint64 LastTick;
+	Uint64 DeltaSeconds;
 
 };
 

@@ -92,12 +92,15 @@ void Engine::Run()
 	//Run
 	while (bRunning) //1 Frame
 	{
+		DeltaSeconds = SDL_GetTicks64() - LastTick;
 		Input();
 		MyWorld->Tick();
 		SDL_SetRenderDrawColor(MyRenderer, 0xff, 0x00, 0x00, 0xff);
 		SDL_RenderClear(MyRenderer);
 
 		MyWorld->Render(); //액터 그릴꺼 등록
+
+		LastTick = SDL_GetTicks64();
 
 		//등록 된 일 시작
 		SDL_RenderPresent(MyRenderer);

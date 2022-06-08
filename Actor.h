@@ -25,6 +25,8 @@ public:
 	int B = 0;
 	int A = 255;
 
+	SDL_Color ColorKey;
+
 	int Size = 60;
 	
 	virtual void Tick();
