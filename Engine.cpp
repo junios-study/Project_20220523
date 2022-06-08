@@ -62,7 +62,7 @@ void Engine::Load(string MapFilename)
 				MyWorld->SpawnActor(new AWall((int)X, Y, '#', true));
 				break;
 			case 'P':
-				MyWorld->SpawnActor(new APlayer((int)X, Y, 'P', true));
+				MyWorld->SpawnActor(new APlayer((int)X, Y, 'P', false));
 				break;
 			case 'G':
 				MyWorld->SpawnActor(new AGoal((int)X, Y, 'G', false));
@@ -105,6 +105,8 @@ void Engine::Run()
 		//등록 된 일 시작
 		SDL_RenderPresent(MyRenderer);
 	}
+
+	
 }
 
 void Engine::Terminate()
