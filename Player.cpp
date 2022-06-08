@@ -10,6 +10,8 @@ APlayer::APlayer()
 	R = 0;
 	G = 0;
 	B = 255;
+
+	LoadBMP("Data/player.bmp");
 }
 
 APlayer::~APlayer()
@@ -23,6 +25,7 @@ APlayer::APlayer(int NewX, int NewY, char NewShape, bool bNewCollision, int NewS
 	R = 0;
 	G = 0;
 	B = 255;
+	LoadBMP("Data/player.bmp");
 }
 
 void APlayer::Tick()

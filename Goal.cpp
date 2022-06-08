@@ -6,6 +6,8 @@ AGoal::AGoal()
 	R = 255;
 	G = 0;
 	B = 255;
+
+	LoadBMP("Data/coin.bmp");
 }
 
 AGoal::AGoal(int NewX, int NewY, char NewShape, bool bNewCollision, int NewSortOrder)
@@ -14,6 +16,8 @@ AGoal::AGoal(int NewX, int NewY, char NewShape, bool bNewCollision, int NewSortO
 	R = 255;
 	G = 0;
 	B = 255;
+
+	LoadBMP("Data/coin.bmp");
 }
 
 AGoal::~AGoal()

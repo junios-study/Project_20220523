@@ -6,6 +6,8 @@ AWall::AWall()
 	R = 0;
 	G = 255;
 	B = 0;
+
+	LoadBMP("Data/wall.bmp");
 }
 
 AWall::AWall(int NewX, int NewY, char NewShape, bool bNewCollision, int NewSortOrder)
@@ -14,6 +16,8 @@ AWall::AWall(int NewX, int NewY, char NewShape, bool bNewCollision, int NewSortO
 	R = 0;
 	G = 255;
 	B = 0;
+
+	LoadBMP("Data/wall.bmp");
 }
 
 AWall::~AWall()
