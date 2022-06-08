@@ -2,6 +2,7 @@
 #include "Engine.h"
 #include "World.h"
 #include "Goal.h"
+#include "SDL.h"
 
 APlayer::APlayer()
 	: AActor()
@@ -20,22 +21,27 @@ APlayer::APlayer(int NewX, int NewY, char NewShape, bool bNewCollision, int NewS
 
 void APlayer::Tick()
 {
-	int KeyCode = Engine::GetKeyCode();
-
-	switch (KeyCode)
+	switch (GEngine->MyEvent.type)
 	{
-	case 'w':
-		Y = (PredictCollision(X, Y - 1) == false) ? Y - 1 : Y;
+	case SDL_QUIT:
+		GEngine->QuitGame();
 		break;
-	case 's':
-		Y = (PredictCollision(X, Y + 1) == false) ? Y + 1 : Y;
-		break;
-	case 'a':
-		X = (PredictCollision(X - 1, Y) == false) ? X - 1 : X;
-		break;
-	case 'd':
-		X = (PredictCollision(X + 1, Y) == false) ? X + 1 : X;
-		break;
+	case SDL_KEYDOWN:
+		switch (GEngine->MyEvent.key.keysym.sym)
+		{
+		case SDLK_w:
+			Y = (PredictCollision(X, Y - 1) == false) ? Y - 1 : Y;
+			break;
+		case SDLK_s:
+			Y = (PredictCollision(X, Y + 1) == false) ? Y + 1 : Y;
+			break;
+		case SDLK_a:
+			X = (PredictCollision(X - 1, Y) == false) ? X - 1 : X;
+			break;
+		case SDLK_d:
+			X = (PredictCollision(X + 1, Y) == false) ? X + 1 : X;
+			break;
+		}
 	}
 
 	if (IsGoal())

@@ -38,8 +38,6 @@ void World::Tick()
 
 void World::Render()
 {
-	system("cls");
-
 	for (AActor* Actor : MyActors)
 	{
 		Actor->Render();

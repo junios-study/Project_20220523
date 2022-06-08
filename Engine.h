@@ -1,6 +1,10 @@
 #pragma once
 #include <string>
 #include "SpriteType.h"
+#include "SDL.h"
+
+#pragma comment(lib, "SDL2main.lib")
+#pragma comment(lib, "SDL2.lib")
 
 class World;
 
@@ -27,6 +31,11 @@ public:
 	inline static Engine* GetEngine() { return Instance; }
 
 	inline World* GetWorld() const { return MyWorld; }
+
+	SDL_Window* MyWindow;
+	SDL_Renderer* MyRenderer;
+	SDL_Event MyEvent;
+
 
 
 protected:
