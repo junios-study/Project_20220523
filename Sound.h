@@ -15,8 +15,11 @@ public:
 	//남욱이만 숙제
 	//볼륨조절 추가
 	virtual void BeginPlay() override;
+	virtual void Tick() override;
+
 
 	Mix_Music* Music;
 	int Loop;
+	int Volume = 30;
 };
 

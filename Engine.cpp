@@ -13,6 +13,7 @@
 #include "Floor.h"
 #include "Monster.h"
 #include "Sound.h"
+#include "Text.h"
 
 
 int Engine::KeyCode = 0;
@@ -93,6 +94,7 @@ void Engine::Load(string MapFilename)
 	MapFile.close();
 
 	MyWorld->SpawnActor(new ASound(100, 100, "data/bgm.mp3", -1));
+	MyWorld->SpawnActor(new AText(100, 100, "Hello World", SDL_Color{ 255, 0, 0 }, 40));
 }
 
 void Engine::Run()
