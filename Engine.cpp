@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <fstream>
 #include <conio.h>
 #include <algorithm>
@@ -41,12 +41,15 @@ void Engine::Initilize()
 		SDL_Log("SDL_INIT_ERROR");
 	}
 
-	//À©µµÃ¢ ¸¸µé±â
+	//ìœˆë„ì°½ ë§Œë“¤ê¸°
 	MyWindow = SDL_CreateWindow("Maze", 100, 100, 800, 600, SDL_WINDOW_VULKAN);
 	MyRenderer = SDL_CreateRenderer(MyWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE);
 
-	//»ç¿îµå ÃÊ±âÈ­
+	//ì‚¬ìš´ë“œ ì´ˆê¸°í™”
 	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+
+	//í°íŠ¸ ì´ˆê¸°í™”
+	TTF_Init();
 }
 
 void Engine::Load(string MapFilename)
@@ -55,13 +58,15 @@ void Engine::Load(string MapFilename)
 	ifstream MapFile(MapFilename);
 
 	int Y = 0;
+	int MaxX = 0;
 	while (MapFile.peek() != EOF)
 	{
 		char Buffer[1024] = { 0, };
 		MapFile.getline(Buffer, 1024);
-
+		MaxX = strlen(Buffer);
 		for (size_t X = 0; X < strlen(Buffer); ++X)
 		{
+
 			char Cursor = Buffer[X];
 			switch (Cursor)
 			{
@@ -87,14 +92,15 @@ void Engine::Load(string MapFilename)
 		Y++;
 	}
 
+	SDL_SetWindowSize(MyWindow, MaxX * 60, Y * 60);
 
-	//±×¸®´Â ¼ø¼­¸¦ º¯°æ
+	//ê·¸ë¦¬ëŠ” ìˆœì„œë¥¼ ë³€ê²½
 	sort(MyWorld->MyActors.begin(), MyWorld->MyActors.end(), AActor::Compare);
 
 	MapFile.close();
 
 	MyWorld->SpawnActor(new ASound(100, 100, "data/bgm.mp3", -1));
-	MyWorld->SpawnActor(new AText(100, 100, "Hello World", SDL_Color{ 255, 0, 0 }, 40));
+	MyWorld->SpawnActor(new AText(100, 100, "ì•ˆë…•í•˜ì„¸ìš”. Hello.", SDL_Color{ 0, 0, 255 }, 40));
 }
 
 void Engine::Run()
@@ -110,11 +116,11 @@ void Engine::Run()
 		SDL_SetRenderDrawColor(MyRenderer, 0xff, 0x00, 0x00, 0xff);
 		SDL_RenderClear(MyRenderer);
 
-		MyWorld->Render(); //¾×ÅÍ ±×¸±²¨ µî·Ï
+		MyWorld->Render(); //ì•¡í„° ê·¸ë¦´êº¼ ë“±ë¡
 
 		LastTick = SDL_GetTicks64();
 
-		//µî·Ï µÈ ÀÏ ½ÃÀÛ
+		//ë“±ë¡ ëœ ì¼ ì‹œì‘
 		SDL_RenderPresent(MyRenderer);
 	}
 
@@ -125,6 +131,8 @@ void Engine::Terminate()
 {
 	delete MyWorld;
 	MyWorld = nullptr;
+
+	TTF_Quit();
 
 	SDL_DestroyRenderer(MyRenderer);
 	SDL_DestroyWindow(MyWindow);

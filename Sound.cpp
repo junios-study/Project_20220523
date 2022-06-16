@@ -8,6 +8,7 @@ ASound::ASound(int NewX, int NewY, string Filename, int NewLoop)
 	Loop = NewLoop;
 
 	Music = Mix_LoadMUS(Filename.c_str());
+	Mix_VolumeMusic(30);
 }
 
 ASound::~ASound()
