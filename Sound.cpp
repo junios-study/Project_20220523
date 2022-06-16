@@ -1,6 +1,6 @@
 #include "Sound.h"
 
-ASound::ASound(int NewX, int NewY, string Filename, int NewLoop = -1)
+ASound::ASound(int NewX, int NewY, string Filename, int NewLoop)
 {
 	X = NewX;
 	Y = NewY;

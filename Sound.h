@@ -9,7 +9,7 @@ using namespace std;
 class ASound : public AActor
 {
 public:
-	ASound(int NewX, int NewY, string Filename, int NewLoop);
+	ASound(int NewX, int NewY, string Filename, int NewLoop = -1);
 	virtual ~ASound();
 
 	//남욱이만 숙제
