@@ -3,6 +3,8 @@
 #include <conio.h>
 #include <algorithm>
 
+#include "SDL_mixer.h"
+
 #include "World.h"
 #include "Engine.h"
 #include "Wall.h"
@@ -10,6 +12,7 @@
 #include "Goal.h"
 #include "Floor.h"
 #include "Monster.h"
+#include "Sound.h"
 
 
 int Engine::KeyCode = 0;
@@ -40,6 +43,9 @@ void Engine::Initilize()
 	//윈도창 만들기
 	MyWindow = SDL_CreateWindow("Maze", 100, 100, 800, 600, SDL_WINDOW_VULKAN);
 	MyRenderer = SDL_CreateRenderer(MyWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE);
+
+	//사운드 초기화
+	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
 }
 
 void Engine::Load(string MapFilename)
@@ -85,11 +91,15 @@ void Engine::Load(string MapFilename)
 	sort(MyWorld->MyActors.begin(), MyWorld->MyActors.end(), AActor::Compare);
 
 	MapFile.close();
+
+	MyWorld->SpawnActor(new ASound(100, 100, "data/bgm.mp3", -1));
 }
 
 void Engine::Run()
 {
 	//Run
+	MyWorld->BeginPlay();
+
 	while (bRunning) //1 Frame
 	{
 		DeltaSeconds = SDL_GetTicks64() - LastTick;

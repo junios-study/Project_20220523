@@ -14,6 +14,14 @@ World::~World()
 	MyActors.clear();
 }
 
+void World::BeginPlay()
+{
+	for (auto Actor : MyActors)
+	{
+		Actor->BeginPlay();
+	}
+}
+
 void World::Tick()
 {
 	//index

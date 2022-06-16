@@ -27,13 +27,16 @@ AActor::AActor(int NewX, int NewY, char NewShape, bool bNewCollision, int NewSor
 	SortOrder = NewSortOrder;
 
 	ColorKey = SDL_Color { 255, 255, 255, 0 };
-
 }
 
 AActor::~AActor()
 {
 	SDL_FreeSurface(Image);
 	SDL_DestroyTexture(Texture);
+}
+
+void AActor::BeginPlay()
+{
 }
 
 void AActor::Tick()

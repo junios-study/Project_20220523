@@ -12,6 +12,7 @@ public:
 
 	vector<AActor*> MyActors;
 
+	void BeginPlay();
 	void Tick();
 	void Render();
 
